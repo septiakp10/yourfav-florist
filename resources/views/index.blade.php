@@ -26,6 +26,7 @@
                 <ul class="navbar-nav align-items-center gap-2">
                     <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Produk (DB)</a></li>
                     <li class="nav-item"><a class="nav-link" href="#form">Pesan</a></li>
 
                     <!-- Tombol Dark Mode -->
