@@ -279,3 +279,45 @@ body.dark-mode .bg-light { background-color: var(--bg-secondary) !important; }
     .hero-section { padding: 60px 15px; }
     .hero-section h1 { font-size: 1.6rem; }
 }
+
+/* ==========================================
+   OUTLINE PINK BUTTON
+   ========================================== */
+.btn-outline-pink {
+    background-color: transparent;
+    border: 2px solid var(--primary-pink);
+    color: var(--primary-pink);
+    font-weight: 600;
+    transition: 0.25s;
+}
+.btn-outline-pink:hover {
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+    color: #fff;
+}
+
+/* ==========================================
+   AUTH FORM HELPERS
+   ========================================== */
+.form-check-input:checked {
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+/* ==========================================
+   DROPDOWN MENU
+   ========================================== */
+.dropdown-menu {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.dropdown-item {
+    color: var(--text-primary);
+    transition: 0.2s;
+}
+.dropdown-item:hover {
+    background-color: #fce4ec;
+    color: var(--primary-pink);
+}

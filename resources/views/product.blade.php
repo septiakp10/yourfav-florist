@@ -1,128 +1,93 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Produk - YourFav Florist</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        .product-table-wrapper {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-            overflow: hidden;
-        }
-        .table-header-pink {
-            background: linear-gradient(135deg, #e91e8c 0%, #f06292 100%);
-            color: #fff;
-        }
-        .table-header-pink th {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            vertical-align: middle;
-            border: none;
-        }
-        .table tbody tr {
-            transition: background 0.2s;
-        }
-        .table tbody tr:hover {
-            background: #fce4ec;
-        }
-        .badge-category {
-            background: linear-gradient(135deg, #e91e8c, #f06292);
-            color: #fff;
-            font-size: 0.8rem;
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
-        .badge-brand {
-            background: linear-gradient(135deg, #7b1fa2, #ba68c8);
-            color: #fff;
-            font-size: 0.8rem;
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
-        .page-title {
-            color: #e91e8c;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .page-subtitle {
-            color: #888;
-            font-size: 1rem;
-        }
-        .product-img-thumb {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid #f8bbd0;
-        }
-        .stat-card {
-            border: none;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: transform 0.2s;
-        }
-        .stat-card:hover {
-            transform: translateY(-4px);
-        }
-        .btn-back {
-            background: linear-gradient(135deg, #e91e8c 0%, #f06292 100%);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: 8px 20px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-back:hover {
-            background: linear-gradient(135deg, #c2185b 0%, #e91e8c 100%);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(233, 30, 140, 0.3);
-        }
-        .harga-text {
-            color: #e91e8c;
-            font-weight: 700;
-        }
-    </style>
-</head>
-<body>
+@extends('layouts.main')
 
-    {{-- ===================== NAVBAR ===================== --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ route('home') }}">🌸 YourFav Florist</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="{{ route('products.index') }}">Produk</a></li>
+@section('title', 'Daftar Produk - YourFav Florist')
 
-                    @if(session()->has('user'))
-                    <li class="nav-item">
-                        <span class="navbar-text text-pink fw-semibold small">
-                            <i class="bi bi-person-circle me-1"></i>{{ session('user') }}
-                        </span>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}"
-                           class="btn btn-sm btn-outline-secondary"
-                           onclick="return confirm('Yakin ingin logout?')"
-                           title="Logout">
-                            <i class="bi bi-box-arrow-right me-1"></i>Logout
-                        </a>
-                    </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+@push('styles')
+<style>
+    .product-table-wrapper {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        overflow: hidden;
+    }
+    .table-header-pink {
+        background: linear-gradient(135deg, #CF7486 0%, #e8a0b0 100%);
+        color: #fff;
+    }
+    .table-header-pink th {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        vertical-align: middle;
+        border: none;
+    }
+    .table tbody tr {
+        transition: background 0.2s;
+    }
+    .table tbody tr:hover {
+        background: #fce4ec;
+    }
+    .badge-category {
+        background: linear-gradient(135deg, #CF7486, #e8a0b0);
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 20px;
+    }
+    .badge-brand {
+        background: linear-gradient(135deg, #7b1fa2, #ba68c8);
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 20px;
+    }
+    .page-title {
+        color: #CF7486;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+    .page-subtitle {
+        color: #888;
+        font-size: 1rem;
+    }
+    .product-img-thumb {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #f8bbd0;
+    }
+    .stat-card {
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        transition: transform 0.2s;
+    }
+    .stat-card:hover {
+        transform: translateY(-4px);
+    }
+    .btn-back {
+        background: linear-gradient(135deg, #CF7486 0%, #e8a0b0 100%);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 8px 20px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .btn-back:hover {
+        background: linear-gradient(135deg, #B85A70 0%, #CF7486 100%);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(207, 116, 134, 0.3);
+    }
+    .harga-text {
+        color: #CF7486;
+        font-weight: 700;
+    }
+</style>
+@endpush
+
+@section('content')
 
     {{-- ===================== HEADER ===================== --}}
     <div class="container mt-5 mb-4">
@@ -193,7 +158,7 @@
                             <td class="ps-4 fw-bold text-muted">{{ $index + 1 }}</td>
                             <td>
                                 @if($product->gambar)
-                                    <img src="{{ asset('assets/' . $product->gambar) }}"
+                                    <img src="{{ asset('storage/products/' . $product->gambar) }}"
                                          alt="{{ $product->nama_product }}"
                                          class="product-img-thumb">
                                 @else
@@ -227,12 +192,4 @@
         </div>
     </div>
 
-    {{-- ===================== FOOTER ===================== --}}
-    <footer class="bg-pink text-white text-center py-4">
-        <p class="mb-0"><strong>YourFav Florist © 2026</strong></p>
-        <p class="small mb-0">Toko Buket Bunga Kawat Bulu Handmade</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection
