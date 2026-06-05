@@ -1,74 +1,14 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourFav Florist - Toko Buket Bunga Handmade</title>
+@extends('layouts.main')
 
-    <script>
-        const STOK_AWAL = { '1': 15, '2': 12, '3': 18 };
-    </script>
+@section('title', 'YourFav Florist - Toko Buket Bunga Handmade')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@push('styles')
+<script>
+    const STOK_AWAL = { '1': 15, '2': 12, '3': 18 };
+</script>
+@endpush
 
-    <!-- ===================== NAVBAR ===================== -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">🌸 YourFav Florist</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Produk (DB)</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#form">Pesan</a></li>
-
-                    <!-- Tombol Dark Mode -->
-                    <li class="nav-item">
-                        <button class="btn btn-sm btn-outline-secondary" id="themeToggle" title="Toggle Dark Mode">
-                            <i class="bi bi-moon-fill"></i>
-                        </button>
-                    </li>
-
-                    <!-- Tombol Favorit / Wishlist -->
-                    <li class="nav-item">
-                        <button class="btn btn-sm btn-outline-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#wishlistModal"
-                            onclick="tampilkanWishlist()">
-                            <i class="bi bi-heart-fill"></i> Favorit
-                            <span class="badge bg-danger ms-1" id="wishlist-count">0</span>
-                        </button>
-                    </li>
-
-                    <!-- Info User yang Login -->
-                    @if(session()->has('user'))
-                    <li class="nav-item">
-                        <span class="navbar-text text-pink fw-semibold small">
-                            <i class="bi bi-person-circle me-1"></i>{{ session('user') }}
-                        </span>
-                    </li>
-
-                    <!-- Tombol Logout -->
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}"
-                           class="btn btn-sm btn-outline-secondary"
-                           onclick="return confirm('Yakin ingin logout?')"
-                           title="Logout">
-                            <i class="bi bi-box-arrow-right me-1"></i>Logout
-                        </a>
-                    </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+@section('content')
 
     <!-- ===================== HERO ===================== -->
     <div class="hero-section" id="home">
@@ -232,12 +172,6 @@
         </div>
     </div>
 
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="bg-pink text-white text-center py-4">
-        <p class="mb-0"><strong>YourFav Florist © 2026</strong></p>
-        <p class="small mb-0">Toko Buket Bunga Kawat Bulu Handmade</p>
-    </footer>
-
     <!-- ===================== MODAL WISHLIST ===================== -->
     <div class="modal fade" id="wishlistModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -261,7 +195,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
-</body>
-</html>
+@endsection
+
+@push('scripts')
+<script src="{{ asset('js/script.js') }}"></script>
+@endpush
